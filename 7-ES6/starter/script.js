@@ -158,7 +158,7 @@ isFullAge(1998,1999,2000,1997,19970)
 
 /////////////////////////////////////////////////////
 // Classes
-
+/*
 //ES5
 var Person5 = function (name, yearOfBith,job) {
     this.name=name;
@@ -185,3 +185,4 @@ class Person6{
 }
 var john6=new Person6('John',1990,'Teacher');
 
+*/
