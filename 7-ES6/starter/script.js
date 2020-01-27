@@ -188,7 +188,7 @@ var john6=new Person6('John',1990,'Teacher');
 */
 //////////////////////////////////////////
 // Classes with subclasses
-/*
+
 var Person5 = function (name, yearOfBith,job) {
     this.name=name;
     this.yearOfBith=yearOfBith
@@ -205,28 +205,4 @@ Person5.prototype.calcAge= function () {
         this.medals=medals;
     } 
     Atthlete5.prototype=Object.create(Person5.prototype);
-
-    //ES6
-    var Person6 = function (name, yearOfBith,job) {
-        this.name=name;
-        this.yearOfBith=yearOfBith
-        this.job=job;
-    }
-
-    class Atthlete6 extends Person6{
-        constructor(name,yearOfBith,job,olympicGames,medals){
-            super(name,yearOfBith,job);
-            this.medals=medals;
-            this.olympicGames-olympicGames
-        }
-        calcAge = function(){
-            return 2020-this.yearOfBith;
-        }
-    }
-    Atthlete6.prototype.add=function () {
-        console.log("Is working")
-    }
-
-    var paps=new Atthlete6("Paps",2000,`Designer`,`Tokyo`,2);
-    console.log(paps.calcAge());
-    */
+    var JohnAthletr

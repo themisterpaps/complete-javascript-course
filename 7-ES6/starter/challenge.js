@@ -1,67 +1,32 @@
-
-    let parks=[3],
-    streets=[4];
-
-    // Park Object 
-    class park{
-    constructor(name,parkArea,yearOfcriation,nrTrees) {
+class Element{
+    constructor(name,build){
         this.name=name;
-        this.parkArea=parkArea;
-        this.yearOfcriation=yearOfcriation;
+        this.build=build;
+    }
+}
+class Park extends Element{
+    constructor(name,build,nrTrees,area){
+        super(name,build);
         this.nrTrees=nrTrees;
+        this.area=area;
     }
-    calcDensity=function() {
-        return this.nrTrees/this.parkArea;
-    }
-    calcAge= function () {
-        return 2020 - this.yearOfcriation;
-    }
-    }
-    //
-    class street{
-        constructor(name,length){
-            this.name=name;
-            this.length=length;
-        }
-    }
-    
-function makeParks() {
-    let name,parkArea, yearOfcriation,nrTrees;
-    for (let i = 0; i < 2; i++) {
-        alert(`introduce Parks data for a ${i}`);
-         name= prompt("Name");
-         parkArea= parseInt(prompt("Park Area"));
-         yearOfcriation= parseInt(prompt("Year of Criation"));
-         nrTrees=parseInt(prompt("Nr of trees"));
-        parks.push(new park(name,parkArea,yearOfcriation,nrTrees));
+    desnsity= function() {
+        console.log(`the Density of the ${this.name} park is ${this.nrTrees/this.area}`);
     }
 }
-function makestreet() {
-    let name,length;
-    for (let i = 0; i < 2; i++) {
-        alert(`introduce street data for a ${i}`);
-         name= prompt("Name");
-         length= parseInt(prompt("Park Area"));
-        streets.push(new street(name,length));
+class Street extends Element{
+    constructor(name,build,length,size){
+        super(name,build);
+        this.length=length;
+        this.size=size;
+    }
+    theSize(){
+        let classification =new Map(); 
+        classification.set(1,"Normal");
+        classification.set(2,"tiny");
+        classification.set(3,"default");
+        classification.set(4,"hight");
+        console.log(`the size of the park is ${this.classification.get(this.size)}`);
+        
     }
 }
-
-function run() {
-    let sum=0;
-    makeParks();
-    makestreet();
-    parks.forEach((current)=> {
-        console.log(`the density of the ${current.name} par is ${current.calcDensity()}`);
-        if(current.nrTrees >= 1000){ console.log(`the tree that has 1000 is ${current.name}`)}
-        sum+=current.calcAge();
-    });
-    console.log(`the avarege of the parks is ${sum/2}`);
-    console.log(`Street`);
-    sum=0;
-    street.forEach(element => {
-        sum+=element.length;
-    });
-    console.log(`The total lenth is ${sum} and avg: ${sum/2} `);
-}
-
-run();
