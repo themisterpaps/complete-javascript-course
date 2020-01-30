@@ -73,19 +73,35 @@
         //     console.log("error!!");
         // })
 
-        async function getRecipes(){
-            const id= await getIDS;
-            console.log(id);
-            const recipe= await getRecipe(id[2]);
-            console.log(recipe);
-            const related=await getRelated("Jonas");
-            console.log(related);
+        // async function getRecipes(){
+        //     const id= await getIDS;
+        //     console.log(id);
+        //     const recipe= await getRecipe(id[2]);
+        //     console.log(recipe);
+        //     const related=await getRelated("Jonas");
+        //     console.log(related);
             
-            return recipe
-        }
-        getRecipes().then((result)=> console.log(result))
-
+        //     return recipe
+        // }
+        // getRecipes().then((result)=> console.log(result));
+            function getWether(woeid) {
+                fetch(`https://crossorigin.me/https://www.metaweather.com/api/location/${woeid}/`).then((result)=>{
+                Console.log(result);
+                return result.json()
+                })
+                .then(data=>{
+                    const today=data.consolidated_wether[0];
+                    console.log(`Temperatures in ${data.title} stay between ${today.max_temp} and ${today.min_temp}`);
+                    console.log(js)})
+                .catch((error => console.log(error)))
       
+            }
+            getWether(44418);
+
+            async function getWhether(id) {
+                
+            }
+                
     </script>
 </body>
 </html>
