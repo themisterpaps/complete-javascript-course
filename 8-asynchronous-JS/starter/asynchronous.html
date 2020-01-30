@@ -9,18 +9,72 @@
 <body>
     <h1>Asynchronous JavaScript</h1>
     <script>
-        const second =() =>{
-           setTimeout(()=>{
-               console.log('Async Hey There');
+        // const second =() =>{
+        //    setTimeout(()=>{
+        //        console.log('Async Hey There');
                
-           }, 2000)
+        //    }, 2000)
+        // }
+        // const first= () =>{
+        //     console.log(`Hey There`);
+        //     second();
+        //     console.log(`the end`);
+        // }  first();
+
+        // function getrecipe(params) {
+        //     const recipeID=[123,321,432,543];
+        //     console.log(recipeID);
+        //     setTimeout((id) => {
+        //         const recipe= {title:'Fresh Tomato', publisher:'Jonas'};
+        //         console.log(`${id}: ${recipe.title}`);
+        //         setTimeout((publisher) => {
+        //             const recipe={title:'Pizza', pubblisher:'Jonas'}
+        //             console.log(`${publisher}: ${recipe.title}`);
+                    
+        //         }, 1500,"Jonas");
+                
+        //     }, 1000,recipeID[1]);
+            
+        // }
+        // getrecipe();
+
+        const getIDS=new Promise((resolve,reject)=>{
+            setTimeout(() => {
+                resolve([123,321,432,543]);
+            }, 1500);
+        });
+        const getRecipe= (recID)=>{
+            return new Promise((resolve,reject)=>{
+                setTimeout((ids) => {
+                    const recipe= {title:'Fresh Tomato', publisher:'Jonas'};
+                    resolve(`${ids}: ${recipe.title}`); 
+                }, 1500,recID);
+            })   
         }
-        const first= () =>{
-            console.log(`Hey There`);
-            second();
-            console.log(`the end`);
+        const getRelated= related =>{
+            return new Promise((resolve,reject)=> {
+                setTimeout((publisher) => {
+                    const recipe={title:'Pizza', pubblisher:'Jonas'}
+                   resolve(`${publisher}: ${recipe.title}`);
+                }, 1500,related);
+            })
         }
-        first();
+        
+        getIDS
+        .then((ids)=>{
+            console.log(ids);  
+            return getRecipe(ids[2]);
+        })
+        .then((recipe) =>{
+             console.log(recipe)
+            return getRelated("Jonas")})
+        .then((pub)=> {console.log(pub)})
+        .catch(ids=>{
+            console.log("error!!");
+        })
+
+
+      
     </script>
 </body>
 </html>
