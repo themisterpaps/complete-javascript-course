@@ -60,19 +60,30 @@
             })
         }
         
-        getIDS
-        .then((ids)=>{
-            console.log(ids);  
-            return getRecipe(ids[2]);
-        })
-        .then((recipe) =>{
-             console.log(recipe)
-            return getRelated("Jonas")})
-        .then((pub)=> {console.log(pub)})
-        .catch(ids=>{
-            console.log("error!!");
-        })
+        // getIDS
+        // .then((ids)=>{
+        //     console.log(ids);  
+        //     return getRecipe(ids[2]);
+        // })
+        // .then((recipe) =>{
+        //      console.log(recipe)
+        //     return getRelated("Jonas")})
+        // .then((pub)=> {console.log(pub)})
+        // .catch(ids=>{
+        //     console.log("error!!");
+        // })
 
+        async function getRecipes(){
+            const id= await getIDS;
+            console.log(id);
+            const recipe= await getRecipe(id[2]);
+            console.log(recipe);
+            const related=await getRelated("Jonas");
+            console.log(related);
+            
+            return recipe
+        }
+        getRecipes().then((result)=> console.log(result))
 
       
     </script>
